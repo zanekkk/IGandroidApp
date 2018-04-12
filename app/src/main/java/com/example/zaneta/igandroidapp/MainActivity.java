@@ -15,10 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         UKbutton = (Button) findViewById(R.id.UKbutton);
 
-        UKbutton.setOnClickListener((v) ->{
-           openSecondActivity();
-
-        });
+        UKbutton.setOnClickListener((v) -> openSecondActivity());
     }
 
     public void openSecondActivity(){

@@ -17,7 +17,7 @@ public class ScrollingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("US Markets");
         setSupportActionBar(toolbar);
-        data = (TextView) findViewById(R.id.ScrolingTexView);
+        data = (TextView) findViewById(R.id.ScrollingTexView);
 
 
         FetchData process = new FetchData();

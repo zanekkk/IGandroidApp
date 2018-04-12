@@ -3,6 +3,10 @@ package com.example.zaneta.igandroidapp;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +17,8 @@ import java.net.URL;
 
 public class FetchData extends AsyncTask<Void,Void,Void> {
     String data = "";
+    String dataParsed = "";
+    String singleParsed = "";
     @Override
     protected Void doInBackground(Void... voids) {
     try {
@@ -26,9 +32,19 @@ public class FetchData extends AsyncTask<Void,Void,Void> {
             line = bufferedReader.readLine();
             data = data + line;
         }
+        JSONObject JS = new JSONObject(data);
+        JSONArray JSarray = JS.getJSONArray("markets");
+
+        for(int i = 0; i < JSarray.length(); i++) {
+            JSONObject JSobject = (JSONObject) JSarray.get(i);
+            singleParsed = "Name:" + JSobject.get("instrumentName") + "\n";
+            dataParsed =  dataParsed + singleParsed;
+        }
     } catch (MalformedURLException e){
         e.printStackTrace();
     } catch (IOException e) {
+        e.printStackTrace();
+    } catch (JSONException e) {
         e.printStackTrace();
     }
         return null;
@@ -37,6 +53,6 @@ public class FetchData extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        ScrollingActivity.data.setText(this.data);
+        ScrollingActivity.data.setText(this.dataParsed);
     }
 }

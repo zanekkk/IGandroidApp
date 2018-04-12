@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
            openSecondActivity();
 
         });
-
     }
 
     public void openSecondActivity(){

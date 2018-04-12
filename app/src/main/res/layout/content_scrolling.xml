@@ -8,4 +8,13 @@
     tools:context=".ScrollingActivity"
     tools:showIn="@layout/activity_scrolling">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/ScrolingTexView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_bar" /></ScrollView>
+
 </android.support.v4.widget.NestedScrollView>

@@ -18,11 +18,17 @@ public class FetchData extends AsyncTask<Void,Void,String> {
     String data = "";
     String dataParsed = "";
     String singleParsed = "";
+    String URL = "";
+    String elements = "";
+    public FetchData(String URL,String elements){
+        this.URL = URL;
+        this.elements = elements;
+    }
 
     @Override
     protected String doInBackground(Void... voids) {
         try {
-            URL url = new URL("https://api.ig.com/deal/samples/markets/ANDROID_PHONE/en_GB/igi");
+            URL url = new URL(URL);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader =  new BufferedReader(new InputStreamReader(inputStream));
@@ -37,7 +43,7 @@ public class FetchData extends AsyncTask<Void,Void,String> {
 
             for(int i = 0; i < JSarray.length(); i++) {
                 JSONObject JSobject = (JSONObject) JSarray.get(i);
-                singleParsed = JSobject.get("instrumentName") + "\n";
+                singleParsed = JSobject.get(elements) + "\n";
                 dataParsed =  dataParsed + singleParsed;
             }
         } catch (MalformedURLException e){

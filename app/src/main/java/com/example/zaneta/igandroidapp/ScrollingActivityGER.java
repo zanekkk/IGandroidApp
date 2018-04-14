@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
-public class ScrollingActivity extends AppCompatActivity {
+public class ScrollingActivityGER extends AppCompatActivity {
     public static String data = null;
     public ListView listView;
     public String[] dataArray ;
@@ -44,7 +44,7 @@ public class ScrollingActivity extends AppCompatActivity {
         dataList = new ArrayList<String>();
 
         try {
-            data = new FetchData("https://api.ig.com/deal/samples/markets/ANDROID_PHONE/en_GB/igi", "instrumentName").execute().get();
+            data = new FetchData("https://api.ig.com/deal/samples/markets/ANDROID_PHONE/de_DE/dem","instrumentName").execute().get();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -52,10 +52,10 @@ public class ScrollingActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-     dataArray = data.split("\n");
-     for(int i = 0 ; i < dataArray.length; i++){
-         dataList.add(dataArray[i]);
-     }
+        dataArray = data.split("\n");
+        for(int i = 0 ; i < dataArray.length; i++){
+            dataList.add(dataArray[i]);
+        }
 
         final ArrayAdapter adapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1, dataList);

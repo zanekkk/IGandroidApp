@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -29,37 +30,24 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 public class ScrollingActivityFRA extends AppCompatActivity {
-    public static String data = null;
-    public ListView listView;
-    public String[] dataArray;
-    public ArrayList<String> dataList;
+
+    private String URL = "https://api.ig.com/deal/samples/markets/ANDROID_PHONE/fr_FR/frm";
+    private ExpandableListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("UK Markets");
+        toolbar.setTitle("FRANCE MARKETS");
         setSupportActionBar(toolbar);
-        listView = (ListView) findViewById(R.id.listView);
-        dataList = new ArrayList<String>();
+        listView = (ExpandableListView) findViewById(R.id.listView);
 
-        try {
-            data = new FetchData("https://api.ig.com/deal/samples/markets/ANDROID_PHONE/fr_FR/ frm", "instrumentName").execute().get();
+        ContentOfScrollActivity content = new ContentOfScrollActivity( URL, ScrollingActivityFRA.this, (ExpandableListView) findViewById(R.id.listView));
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        ExpandableAdapter expandableAdapter = new ExpandableAdapter(ScrollingActivityFRA.this, content.groupArray, content.childArray);
+        listView.setAdapter(expandableAdapter);
 
-        dataArray = data.split("\n");
-        for (int i = 0; i < dataArray.length; i++) {
-            dataList.add(dataArray[i]);
-        }
-
-        final ArrayAdapter adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1, dataList);
-        listView.setAdapter(adapter);
     }
+
 }

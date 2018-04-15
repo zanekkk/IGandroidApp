@@ -18,11 +18,13 @@ public class FetchData extends AsyncTask<Void,Void,String> {
     String data = "";
     String dataParsed = "";
     String singleParsed = "";
-    String URL = "";
-    String elements = "";
-    public FetchData(String URL,String elements){
+    String URL;
+    String elements ;
+    String text;
+    public FetchData(String URL,String elements, String text){
         this.URL = URL;
         this.elements = elements;
+        this.text = text;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class FetchData extends AsyncTask<Void,Void,String> {
 
             for(int i = 0; i < JSarray.length(); i++) {
                 JSONObject JSobject = (JSONObject) JSarray.get(i);
-                singleParsed = JSobject.get(elements) + "\n";
+                singleParsed = text + JSobject.get(elements) + "\n";
                 dataParsed =  dataParsed + singleParsed;
             }
         } catch (MalformedURLException e){

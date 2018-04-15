@@ -30,6 +30,17 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 app:title="UK Markets" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  Press the name of market to see more informations."
+                android:textAllCaps="false"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_collapseParallaxMultiplier="1.0" />
+
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

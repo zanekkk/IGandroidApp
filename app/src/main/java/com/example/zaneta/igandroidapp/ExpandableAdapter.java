@@ -77,7 +77,6 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView( int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         TextView txtView = new TextView(context);
-        Log.d("MyApp",groupPosition + " " + childPosition);
         txtView.setText(arrayChildren[groupPosition][childPosition]);
         txtView.setPadding(10,0,0,0);
         txtView.setTextSize(30);

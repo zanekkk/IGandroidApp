@@ -5,6 +5,8 @@ package com.example.zaneta.igandroidapp;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 public class ContentOfScrollActivity extends AppCompatActivity {
@@ -43,7 +45,7 @@ public class ContentOfScrollActivity extends AppCompatActivity {
 
     public void setArrays(){
         groupArray = instrumentData.split("\n");
-        childArray = new String[groupArray.length][7];
+        childArray = new String[groupArray.length][8];
 
         versionArray = versionData.split("\n");
         periodArray = periodData.split("\n");
@@ -56,17 +58,32 @@ public class ContentOfScrollActivity extends AppCompatActivity {
 
         for(int i = 0; i < groupArray.length ; i++){
 
-            childArray[i][0] = versionArray[i];
-            childArray[i][1] = periodArray[i];
-            childArray[i][2] = epicArray[i] ;
-            childArray[i][3] = exchangeArray[i];
-            childArray[i][4] = bidArray[i];
-            childArray[i][5] = offerArray[i];
-            childArray[i][6] = timeArray[i];
-
+            childArray[i][0] = groupArray[i];
+            childArray[i][1] = versionArray[i];
+            childArray[i][2] = periodArray[i];
+            childArray[i][3] = epicArray[i];
+            childArray[i][4] = exchangeArray[i];
+            childArray[i][5] = bidArray[i];
+            childArray[i][6] = offerArray[i];
+            childArray[i][7] = timeArray[i];
         }
+
+        Arrays.sort(groupArray);
+        Arrays.sort(childArray, new ColumnComparator(0));
+
+
     }
 
+    class ColumnComparator implements Comparator {
+        int columnToSort;
+        ColumnComparator(int columnToSort) {
+            this.columnToSort = columnToSort;
+        }
+        public int compare(Object o1, Object o2) {
+            String[] row1 = (String[]) o1;
+            String[] row2 = (String[]) o2;
+            return row1[columnToSort].compareTo(row2[columnToSort]);
+        }
 
 
-}
+}}

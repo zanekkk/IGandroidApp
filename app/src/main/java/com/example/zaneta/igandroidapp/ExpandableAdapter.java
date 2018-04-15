@@ -1,3 +1,5 @@
+//Żaneta Cichoń April/2018
+
 package com.example.zaneta.igandroidapp;
 
 import android.content.Context;

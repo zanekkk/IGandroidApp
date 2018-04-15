@@ -1,7 +1,6 @@
 package com.example.zaneta.igandroidapp;
 
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 
@@ -16,7 +15,7 @@ public class ContentOfScrollActivity extends AppCompatActivity {
 
 
 
-    public ContentOfScrollActivity(String URL, Context context, ExpandableListView listView){
+    public ContentOfScrollActivity(String URL, ExpandableListView listView){
         this.listView = listView;
 
 

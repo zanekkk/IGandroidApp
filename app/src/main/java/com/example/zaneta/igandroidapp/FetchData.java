@@ -15,12 +15,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FetchData extends AsyncTask<Void,Void,String> {
-    String data = "";
-    String dataParsed = "";
-    String singleParsed = "";
-    String URL;
-    String elements ;
-    String text;
+    private String data = "", dataParsed = "", singleParsed = "";
+    private String URL;
+    private String elements ;
+    private String text;
+
     public FetchData(String URL,String elements, String text){
         this.URL = URL;
         this.elements = elements;
@@ -35,18 +34,20 @@ public class FetchData extends AsyncTask<Void,Void,String> {
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader =  new BufferedReader(new InputStreamReader(inputStream));
             String line = "";
-            while(line != null){
 
+            while(line != null){
                 line = bufferedReader.readLine();
-                data = data + line;
+                data += line;
             }
+
             JSONObject JS = new JSONObject(data);
             JSONArray JSarray = JS.getJSONArray("markets");
+
 
             for(int i = 0; i < JSarray.length(); i++) {
                 JSONObject JSobject = (JSONObject) JSarray.get(i);
                 singleParsed = text + JSobject.get(elements) + "\n";
-                dataParsed =  dataParsed + singleParsed;
+                dataParsed += singleParsed;
             }
         } catch (MalformedURLException e){
             e.printStackTrace();
@@ -61,5 +62,4 @@ public class FetchData extends AsyncTask<Void,Void,String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-      //  ScrollingActivity.data.setText(this.dataParsed);
     }}

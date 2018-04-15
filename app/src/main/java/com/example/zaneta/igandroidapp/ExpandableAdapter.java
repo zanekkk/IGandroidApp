@@ -11,9 +11,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ExpandableAdapter extends BaseExpandableListAdapter {
-   String[] arrayGroup ;
-   String[][] arrayChildren;
-    Context context;
+    private String[] arrayGroup ;
+    private String[][] arrayChildren;
+    private Context context;
 
      public ExpandableAdapter(Context context, String[] arrayGroup, String[][] arrayChildren){
         this.arrayGroup = arrayGroup;

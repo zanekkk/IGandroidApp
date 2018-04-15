@@ -95,4 +95,7 @@
     <string name="title_activity_scrolling2">ScrollingActivity2</string>
     <string name="title_activity_scrolling_ger">ScrollingActivityGER</string>
     <string name="title_activity_scrolling_fr">ScrollingActivityFRA</string>
+    <string name="title_activity_fr">ActivityFR</string>
+    <string name="title_activity_ger">ActivityGER</string>
+    <string name="title_activity_uk">ActivityUK</string>
 </resources>

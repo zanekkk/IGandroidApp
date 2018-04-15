@@ -5,35 +5,35 @@ package com.example.zaneta.igandroidapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 
 public class MainActivity extends AppCompatActivity {
- Button UKbutton, GERbutton,FRAbutton ;
+    private String URL = "https://api.ig.com/deal/samples/markets/ANDROID_PHONE/en_GB/igi";
+    private ExpandableListView listView;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        UKbutton = (Button) findViewById(R.id.UKbutton);
-        UKbutton.setOnClickListener((v) -> openUKactivity());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("UK MARKETS");
+//        setSupportActionBar(toolbar);
+        button = (Button) findViewById(R.id.button1);
 
-        GERbutton= (Button) findViewById(R.id.GERMANYbutton);
-        GERbutton.setOnClickListener((v) -> openGERactivity());
+        button.setOnClickListener((v) -> openCountryActivity());
 
-        FRAbutton= (Button) findViewById(R.id.FRANCEbutton);
-        FRAbutton.setOnClickListener((v) -> openFRAactivity());
+        listView = (ExpandableListView) findViewById(R.id.listViewUK);
+        ContentOfScrollActivity content = new ContentOfScrollActivity(URL, listView);
+
+        ExpandableAdapter expandableAdapter = new ExpandableAdapter(MainActivity.this, content.groupArray, content.childArray);
+        listView.setAdapter(expandableAdapter);
     }
 
-    public void openUKactivity(){
-        Intent intent = new Intent(this,ActivityUK.class);
+    public void openCountryActivity(){
+        Intent intent = new Intent(this,ChooseCountry.class);
         startActivity(intent);
-    }
-    public void openGERactivity(){
-        Intent intent = new Intent(this,ActivityGER.class);
-        startActivity(intent);
-    }
-    public void openFRAactivity(){
-       Intent intent = new Intent(this,ActivityFR.class);
-       startActivity(intent);
     }
 }

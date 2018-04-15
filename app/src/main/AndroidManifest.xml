@@ -29,8 +29,8 @@
             android:label="@string/title_activity_ger"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivityUK"
-            android:label="@string/title_activity_uk"
+            android:name=".ChooseCountry"
+            android:label="@string/title_activity_choose_country"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -98,4 +98,5 @@
     <string name="title_activity_fr">ActivityFR</string>
     <string name="title_activity_ger">ActivityGER</string>
     <string name="title_activity_uk">ActivityUK</string>
+    <string name="title_activity_choose_country">ChooseCountry</string>
 </resources>
